@@ -7,9 +7,30 @@
   --teal: #145369;
 }
 
+/*--------------------------------------------------------------
+# Skip Link (Accessibility)
+--------------------------------------------------------------*/
+.skip-link {
+  position: absolute;
+  top: -50px;
+  left: 0;
+  background: var(--teal);
+  color: #fff;
+  padding: 12px 24px;
+  z-index: 99999;
+  transition: top 0.3s;
+  font-weight: 600;
+  text-decoration: none;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid var(--mary-gold);
+  outline-offset: 2px;
+}
+
 body {
   font-family: "Lora", serif;
-  color: #444444;
+  color: #333333;
 }
 
 a {
@@ -144,11 +165,12 @@ section {
   line-height: 0;
 }
 .back-to-top:hover {
-  background: ivory;
+  background: var(--teal);
   color: #fff;
+  transform: translateY(-3px);
 }
 .back-to-top:hover i {
-  color: var(--mary-gold);
+  color: #fff;
 }
 .back-to-top.active {
   visibility: visible;
@@ -175,7 +197,7 @@ section {
 .header.header-scrolled {
   background: #fff;
   padding: 15px 0;
-  box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 .header .logo img {
@@ -220,7 +242,7 @@ section {
 .navbar a:focus i {
   font-size: 12px;
   line-height: 0;
-  margin-left: 5px;
+  margin-left: 8px;
 }
 .navbar a:hover,
 .navbar .active,
@@ -341,12 +363,12 @@ section {
 .navbar-mobile a:focus {
   padding: 10px 20px;
   font-size: 15px;
-  color: #012970;
+  color: var(--teal);
 }
 .navbar-mobile a:hover,
 .navbar-mobile .active,
 .navbar-mobile li:hover > a {
-  color: #4154f1;
+  color: var(--mary-gold);
 }
 .navbar-mobile .getstarted,
 .navbar-mobile .getstarted:focus {
@@ -375,7 +397,7 @@ section {
 .navbar-mobile .dropdown ul a:hover,
 .navbar-mobile .dropdown ul .active:hover,
 .navbar-mobile .dropdown ul li:hover > a {
-  color: #4154f1;
+  color: var(--mary-gold);
 }
 .navbar-mobile .dropdown > .dropdown-active {
   display: block;
@@ -427,6 +449,53 @@ section {
 }
 .hero .hero-img {
   text-align: right;
+}
+.hero .hero-cta {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.hero .btn-hero-primary {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 32px;
+  background: var(--mary-gold);
+  color: #fff;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+.hero .btn-hero-primary i {
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+.hero .btn-hero-primary:hover {
+  background: var(--teal);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(20, 83, 105, 0.3);
+}
+.hero .btn-hero-primary:hover i {
+  transform: translateX(4px);
+}
+.hero .btn-hero-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 32px;
+  background: transparent;
+  color: var(--teal);
+  border: 2px solid var(--teal);
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+.hero .btn-hero-secondary:hover {
+  background: var(--teal);
+  color: #fff;
+  transform: translateY(-2px);
 }
 @media (min-width: 1024px) {
   .hero {
@@ -484,7 +553,14 @@ section {
 }
 .about p {
   margin: 15px 0 30px 0;
-  line-height: 24px;
+  line-height: 1.7;
+  font-size: 16px;
+}
+@media (max-width: 768px) {
+  .about p {
+    font-size: 15px;
+    line-height: 1.8;
+  }
 }
 .about .btn-read-more {
   line-height: 0;
@@ -1333,6 +1409,27 @@ section {
   left: -50px;
   top: -35px;
 }
+@media (max-width: 768px) {
+  .swiper-button-next i {
+    right: 0;
+    top: 0;
+  }
+  .swiper-button-prev {
+    left: 0;
+    top: 0;
+  }
+}
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background-color: rgba(20, 83, 105, 0.3);
+  opacity: 1;
+}
+.swiper-pagination-bullet-active {
+  background-color: var(--teal);
+  width: 24px;
+  border-radius: 5px;
+}
 /*--------------------------------------------------------------
 # Recent Blog Posts
 --------------------------------------------------------------*/
@@ -1351,8 +1448,12 @@ section {
   overflow: hidden;
   margin: -30px -30px 15px -30px;
   position: relative;
+  aspect-ratio: 16/10;
 }
 .recent-blog-posts .post-box .post-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   transition: 0.5s;
 }
 .recent-blog-posts .post-box .post-date {
@@ -1373,9 +1474,13 @@ section {
 .recent-blog-posts .post-box .readmore {
   display: flex;
   align-items: center;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1;
   transition: 0.3s;
+  color: var(--teal);
+}
+.recent-blog-posts .post-box .readmore:hover {
+  color: var(--mary-gold);
 }
 .recent-blog-posts .post-box .readmore i {
   line-height: 0;
@@ -1418,6 +1523,13 @@ section {
   background: #fafbff;
   padding: 30px;
   height: 100%;
+}
+.contact .php-email-form .form-label {
+  display: block;
+  font-weight: 600;
+  color: var(--teal);
+  margin-bottom: 8px;
+  font-size: 14px;
 }
 .contact .php-email-form .error-message {
   display: none;
@@ -1466,6 +1578,9 @@ section {
 .contact .php-email-form input:focus,
 .contact .php-email-form textarea:focus {
   border-color: var(--teal);
+  outline: 2px solid var(--mary-gold);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(250, 188, 20, 0.2);
 }
 .contact .php-email-form input {
   padding: 10px 15px;
@@ -1491,7 +1606,12 @@ section {
   gap: 18px;
 }
 .contact .php-email-form button[type="submit"]:hover {
-  background: var(--mary-gold);
+  background: var(--teal);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(20, 83, 105, 0.3);
+}
+.contact .php-email-form button[type="submit"]:active {
+  transform: translateY(0);
 }
 @-webkit-keyframes animate-loading {
   0% {
@@ -1941,8 +2061,10 @@ section {
 }
 .footer .footer-nav a {
   color: #fff;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid transparent;
   margin-left: 8px;
+  padding-bottom: 2px;
+  transition: all 0.3s ease;
 }
 .footer .footer-nav a:hover {
   color: var(--mary-gold);
@@ -1967,14 +2089,23 @@ section {
   color: var(--mary-gold);
 }
 
+.footer .social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 12px;
+  transition: 0.3s;
+}
 .footer .social-links i {
   color: #fff;
-  font-size: 18px;
+  font-size: 20px;
 }
 .footer .social-links {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 8px;
 }
 .footer .social-links a:hover i {
   color: var(--mary-gold);
